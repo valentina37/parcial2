@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado Total</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="icon" href="../img/iconoweb.png" type="image/x-icon"> <!-- Icono favicon -->
+    <style>
+        /* Estilo general */
+		/* Estilo general */
+		    html, body {
+		        height: 100%; /* Asegura que ocupen toda la pantalla */
+		        margin: 0;
+		        padding: 0;
+		    }
+		
+		    body {
+		        background-color: #f0f2f5;
+		        display: flex;
+		        flex-direction: column; /* Layout en columna */
+		    }
+
+       
+        /* Contenedor general */
+        		.centered-container {
+			       display: flex;
+			       justify-content: center;
+			       align-items: center;
+			       flex: 1; /* Este contenedor ocupará todo el espacio disponible */
+			   }
+
+
+        /* Contenedor interno */
+		.container-custom {
+		       background-color: #ffffff;
+		       padding: 20px;
+		       border-radius: 15px;
+		       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+		       width: 60%; 
+		       max-width: 800px;
+		   }
+
+        .title-center {
+            text-align: center;
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .info {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .info h3 {
+            font-size: 22px;
+            color: #555;
+        }
+
+        .info p {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Colores dependiendo del nivel */
+        .nivel-color-1 {
+            background-color: #f44336;
+            color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .nivel-color-2 {
+            background-color: #ff9800;
+            color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .nivel-color-3 {
+            background-color: #2196f3;
+            color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .nivel-color-4 {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .divider {
+            width: 100%;
+            height: 1px;
+            background-color: #e0e0e0;
+            margin: 10px 0;
+        }
+
+        .approval h3 {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #444;
+        }
+
+        .approval h3 span {
+            padding: 8px 12px;
+            border-radius: 8px;
+            background-color: #f0f0f0;
+        }
+		footer {
+		       background-color: #343a40;
+		       color: white;
+		       padding: 10px 0;
+		       text-align: center;
+		   }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container-custom {
+                width: 90%;
+            }
+
+            .title-center {
+                font-size: 22px;
+            }
+
+            .info h3 {
+                font-size: 18px;
+            }
+
+            .info p {
+                font-size: 18px;
+            }
+
+            .approval h3 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+		    <!-- Navbar Brand-->
+		    <a class="navbar-brand ps-3" th:href="@{/coordinador/index}">Inicio Coordinador</a>
+		     <!-- Navbar-->
+		    
+		</nav>
+
+    <!-- Contenedor principal -->
+	<div class="centered-container">
+	    
+						
+						<div class="container-custom">
+						    <div class="row">
+						        <div class="col-md-12">
+						            <div class="container">
+						                <div th:if="${estado == 'ANULADO'}">
+						                    <h3 class="title-center">ESTADO: ANULADO</h3> <!-- Mostrar solo si el estado es "ANULADO" -->
+						                </div>
+						                <div th:unless="${estado == 'ANULADO'}"> <!-- Mostrar si NO está anulado -->
+						                    <div class="top">
+						                        <h2 class="title-center">TOTAL</h2>
+						                    </div>
+						                    <div class="bottom">
+						                        <div class="info">
+						                            <h3 class="level" th:text="${totalLevel}">Nivel 3</h3>
+						                        </div>
+						                        <div class="divider"></div>
+						                        <div class="info">
+						                            <h3>Puntaje</h3>
+						                            <p th:text="${total}">80</p>
+						                        </div>
+						                    </div>
+						                    <div class="approval">
+						                        <h3>
+						                            <span th:if="${totalLevel == 'Nivel 1' || totalLevel == 'Nivel 0'}">REPROBÓ</span>
+						                            <span th:if="${totalLevel == 'Nivel 2' || totalLevel == 'Nivel 3' || totalLevel == 'Nivel 4'}">APROBÓ</span>
+						                        </h3>
+						                    </div>
+						                </div>
+						            </div>
+						        </div>
+						    </div>
+						</div>
+						</div>
+
+						
+						<div class="container mt-5">
+								        <button class="btn btn-light btn-back" onclick="window.history.back()">Volver</button> <!-- Botón de volver usando history -->
+										</div>
+										
+										
+	<footer class="bg-dark text-white">
+	       <div class="container-fluid p-6">
+	           <div class="row">
+	               <div class="col text-center">
+	                   <p class="mb-0">DANNA VALENTINA MILLAN SOLANO</p>
+	                   <p class="mb-0">2024</p>
+	               </div>
+	           </div>
+	       </div>
+	   </footer>
+    <!-- jQuery y Popper.js necesarios para Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Script para asignar colores de fondo dependiendo del nivel -->
+    <script>
+        var niveles = document.querySelectorAll(".level");
+        niveles.forEach(function(nivel) {
+            var textoNivel = nivel.textContent.trim();
+            var infoDiv = nivel.parentElement.parentElement; // Obtener el div padre de "level"
+            switch (textoNivel) {
+                case "Nivel 1":
+                    infoDiv.querySelector(".info").classList.add("nivel-color-1");
+                    break;
+                case "Nivel 2":
+                    infoDiv.querySelector(".info").classList.add("nivel-color-2");
+                    break;
+                case "Nivel 3":
+                    infoDiv.querySelector(".info").classList.add("nivel-color-3");
+                    break;
+                case "Nivel 4":
+                    infoDiv.querySelector(".info").classList.add("nivel-color-4");
+                    break;
+                default:
+                    break;
+            }
+        });
+    </script>
+
+</body>
+
+</html>
