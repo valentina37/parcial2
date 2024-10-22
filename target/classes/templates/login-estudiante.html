@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;500;700;800&display=swap">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    
+    <title>Login estudiante</title>
+	
+	<link rel="stylesheet" type="text/css" href="static/css/logines.css" 	th:href="@{/css/logines.css}">
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <a class="navbar-brand d-flex align-items-center justify-content-center">
+            <img src="https://bogota.gov.co/sites/default/files/styles/1050px/public/field/image/ICFES.jpg" alt="logo">
+           
+        </a>
+    </nav>
+   
+    <main class="login-design">
+        <div class="login">
+            <div class="login-data login-box"> <!-- Caja para el inicio de sesión -->
+                <h1>Inicio de Sesión Estudiante</h1>
+                <div th:if="${error}" class="error-message">Usuario o contraseña incorrectos</div>
+                <form th:action="@{/estudiante/logear}" method="post">
+                    <div class="input-group">
+                        <label class="input-fill">
+                            <input type="text" name="usuario" id="usuario" placeholder="Nombre de Usuario" required>
+                            <span class="input-label">Nombre de Usuario</span>
+                            <i class="fas fa-user"></i>
+                        </label>
+                    </div>
+                    <div class="input-group">
+                        <label class="input-fill">
+                            <input type="password" name="contrasena" id="contrasena" placeholder="Contraseña" required>
+                            <span class="input-label">Contraseña</span>
+                            <i class="fas fa-lock"></i>
+                        </label>
+                    </div>
+                    <input type="submit" value="Iniciar Sesión" class="btn-login">
+					<p> <a th:href="@{/}">Cambiar de rol</a></p>
+                </form>
+            </div>
+        </div>
+        <div class="image-container">
+            <img src="https://img.freepik.com/vector-gratis/ilustracion-concepto-examenes_114360-1815.jpg?semt=ais_hybrid" alt="">
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white">
+        <div class="container-fluid p-6">
+            <div class="row">
+                <div class="col text-center">
+                    <p class="mb-0">DANNA VALENTINA MILLAN SOLANO</p>
+                    <p class="mb-0">2024</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

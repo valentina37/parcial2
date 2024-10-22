@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Informe del Estudiante</title>
+    <!-- Agrega Bootstrap desde un CDN -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+		.container-card {
+		       display: flex; /* Asegura que sea un contenedor flex */
+		       justify-content: center; /* Centra horizontalmente */
+		       align-items: center; /* Centra verticalmente */
+		       min-height: 100vh; /* Ocupa el 100% de la altura de la pantalla */
+		       background-color: #f8f9fa;
+		   }
+		
+		   .card {
+		       padding: 40px;
+		       border-radius: 10px;
+		       box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+		       width: 40%;
+		       background-color: white;
+		       text-align: center;
+		   }
+        .user-icon {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .user-icon img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+        }
+        /* Estilos de niveles */
+        .badge {
+            font-size: 1rem;
+            padding: 0.5rem;
+            margin-left: 10px;
+            border-radius: 10px;
+            display: inline-block;
+            min-width: 80px;
+        }
+        .nivel-1 { background-color: red; color: white; }
+        .nivel-2 { background-color: orange; color: white; }
+        .nivel-3 { background-color: yellow; color: black; }
+        .nivel-4 { background-color: green; color: white; }
+        /* Espaciado entre cada sección */
+        .info-section {
+            margin-bottom: 15px;
+        }
+        .info-section p {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .info-section p strong {
+            flex: 1;
+            text-align: left;
+        }
+        .info-section span.badge {
+            margin-left: auto;
+        }
+    </style>
+</head>
+
+<body>
+	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+		    <!-- Navbar Brand-->
+		    <a class="navbar-brand ps-3" th:href="@{/coordinador/index}">Inicio Coordinador</a>
+		     <!-- Navbar-->
+		    
+		</nav>
+
+	
+    <div class="container-card">
+        <div class="card">
+            <!-- Icono de usuario -->
+            <div class="user-icon">
+                <img src="https://cdn-icons-png.flaticon.com/128/1081/1081040.png" alt="Usuario">
+            </div>
+            
+            <h1>Informe del Estudiante</h1>
+            
+            
+                <p><strong>Nombre Completo:</strong> 
+                <span th:text="${nombre}"></span>
+                <span ttext="${segundon}"></span>
+                <span th:text="${apellido}"></span>
+                <span th:text="${segundoa}"></span></p>
+            
+				<div class="info-section">
+				                <p><strong>Puntaje Total General:</strong>
+				                    <span th:text="${total}" class="badge"></span> 
+				                    <span th:class="${totalLevel == 'Nivel 1' ? 'badge nivel-1' : (totalLevel == 'Nivel 2' ? 'badge nivel-2' : (totalLevel == 'Nivel 3' ? 'badge nivel-3' : 'badge nivel-4'))}">
+				                        <span th:text="${totalLevel}"></span>
+				                    </span>
+				                </p>
+				            </div>
+				
+            <h2>Puntajes y Niveles</h2>
+
+            <div class="info-section">
+                <p><strong>Comunicación Escrita:</strong>
+                    <span th:text="${comunicacion}" class="badge"></span> 
+                    <span th:class="${comunicacionLevel == 'Nivel 1' ? 'badge nivel-1' : (comunicacionLevel == 'Nivel 2' ? 'badge nivel-2' : (comunicacionLevel == 'Nivel 3' ? 'badge nivel-3' : 'badge nivel-4'))}">
+                        <span th:text="${comunicacionLevel}"></span>
+                    </span>
+                </p>
+            </div>
+
+            <div class="info-section">
+                <p><strong>Razonamiento Cuantitativo:</strong>
+                    <span th:text="${razonamiento}" class="badge"></span> 
+                    <span th:class="${razonamientoLevel == 'Nivel 1' ? 'badge nivel-1' : (razonamientoLevel == 'Nivel 2' ? 'badge nivel-2' : (razonamientoLevel == 'Nivel 3' ? 'badge nivel-3' : 'badge nivel-4'))}">
+                        <span th:text="${razonamientoLevel}"></span>
+                    </span>
+                </p>
+            </div>
+
+            <div class="info-section">
+                <p><strong>Lectura Crítica:</strong>
+                    <span th:text="${lectura}" class="badge"></span> 
+                    <span th:class="${lecturaLevel == 'Nivel 1' ? 'badge nivel-1' : (lecturaLevel == 'Nivel 2' ? 'badge nivel-2' : (lecturaLevel == 'Nivel 3' ? 'badge nivel-3' : 'badge nivel-4'))}">
+                        <span th:text="${lecturaLevel}"></span>
+                    </span>
+                </p>
+            </div>
+
+            <div class="info-section">
+                <p><strong>Competencias Ciudadanas:</strong>
+                    <span th:text="${competencias}" class="badge"></span> 
+                    <span th:class="${competenciasLevel == 'Nivel 1' ? 'badge nivel-1' : (competenciasLevel == 'Nivel 2' ? 'badge nivel-2' : (competenciasLevel == 'Nivel 3' ? 'badge nivel-3' : 'badge nivel-4'))}">
+                        <span th:text="${competenciasLevel}"></span>
+                    </span>
+                </p>
+            </div>
+
+            <div class="info-section">
+                <p><strong>Inglés:</strong>
+                    <span th:text="${ingles}" class="badge"></span> 
+                    <span th:class="${inglesLevel == 'Nivel 1' ? 'badge nivel-1' : (inglesLevel == 'Nivel 2' ? 'badge nivel-2' : (inglesLevel == 'Nivel 3' ? 'badge nivel-3' : 'badge nivel-4'))}">
+                        <span th:text="${inglesLevel}"></span>
+                    </span>
+                </p>
+            </div>
+
+            <div class="info-section">
+                <p><strong>Formulación De Proyectos De Ingeniería:</strong>
+                    <span th:text="${formulacion}" class="badge"></span> 
+                    <span th:class="${formulacionLevel == 'Nivel 1' ? 'badge nivel-1' : (formulacionLevel == 'Nivel 2' ? 'badge nivel-2' : (formulacionLevel == 'Nivel 3' ? 'badge nivel-3' : 'badge nivel-4'))}">
+                        <span th:text="${formulacionLevel}"></span>
+                    </span>
+                </p>
+            </div>
+
+            <div class="info-section">
+                <p><strong>Pensamiento Científico:</strong>
+                    <span th:text="${pensamiento}" class="badge"></span> 
+                    <span th:class="${pensamientoLevel == 'Nivel 1' ? 'badge nivel-1' : (pensamientoLevel == 'Nivel 2' ? 'badge nivel-2' : (pensamientoLevel == 'Nivel 3' ? 'badge nivel-3' : 'badge nivel-4'))}">
+                        <span th:text="${pensamientoLevel}"></span>
+                    </span>
+                </p>
+            </div>
+
+            <div class="info-section">
+                <p><strong>Diseño De Software:</strong>
+                    <span th:text="${Diseno}" class="badge"></span> 
+                    <span th:class="${DisenoLevel == 'Nivel 1' ? 'badge nivel-1' : (DisenoLevel == 'Nivel 2' ? 'badge nivel-2' : (DisenoLevel == 'Nivel 3' ? 'badge nivel-3' : 'badge nivel-4'))}">
+                        <span th:text="${DisenoLevel}"></span>
+                    </span>
+                </p>
+            </div>
+
+        </div>
+    </div>
+	
+	<div class="container mt-5">
+			        <button class="btn btn-light btn-back" onclick="window.history.back()">Volver</button> <!-- Botón de volver usando history -->
+					</div>
+					
+	<footer class="bg-dark text-white">
+	       <div class="container-fluid p-6">
+	           <div class="row">
+	               <div class="col text-center">
+	                   <p class="mb-0">DANNA VALENTINA MILLAN SOLANO</p>
+	                   <p class="mb-0">2024</p>
+	               </div>
+	           </div>
+	       </div>
+	   </footer>
+    <!-- Agrega Bootstrap desde un CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

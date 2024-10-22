@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Resultado Unico</title>
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="icon" href="../img/iconoweb.png" type="image/x-icon"> <!-- Icono favicon -->
+	<style>
+		body {
+			font-family: 'Lato', sans-serif;
+			background-color: #f4f4f4;
+			
+		}
+
+		.page-title {
+			font-family: 'Playfair Display', serif;
+			font-size: 2.5rem;
+			text-align: center;
+			color: #333;
+			margin-bottom: 30px;
+		}
+
+		.card {
+			border-radius: 15px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			background-color: #fff;
+			padding: 20px;
+			margin-bottom: 20px;
+			transition: all 0.3s ease-in-out;
+		}
+
+		.card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+		}
+
+		.card h2 {
+			font-family: 'Playfair Display', serif;
+			font-size: 1.5rem;
+			color: #555;
+			text-align: center;
+			margin-bottom: 15px;
+		}
+
+		.card .info {
+			background-color: #f4f4f4;
+			padding: 10px;
+			border-radius: 10px;
+			text-align: center;
+		}
+
+		.card .info h3 {
+			font-size: 1.2rem;
+			color: #333;
+			font-weight: bold;
+			margin-bottom: 10px;
+		}
+
+		.card .info p {
+			font-size: 1rem;
+			color: #666;
+		}
+
+		.nivel-1 { color: red; }
+		 .nivel-2 { color: orange; }
+		       .nivel-3 { color: yellow; }
+		       .nivel-4 { color: green; }
+			   
+			   
+		
+		.centered-container {
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+		}
+
+		.card-container {
+			width: 45%;
+			margin: 15px;
+		}
+
+		@media only screen and (max-width: 768px) {
+			.card-container {
+				width: 100%;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+		    <!-- Navbar Brand-->
+		    <a class="navbar-brand ps-3" th:href="@{/coordinador/index}">Inicio Estudiante</a>
+		     <!-- Navbar-->
+		    
+		</nav>
+<p></p>
+	<div class="container-fluid">
+		<p><strong>Nombre Completo:</strong> 
+				                <span th:text="${nombre}"></span>
+				                <span ttext="${segundon}"></span>
+				                <span th:text="${apellido}"></span>
+				                <span th:text="${segundoa}"></span></p>
+				
+								
+								<div th:if="${ingles == 0 and comunicacion == 0 and razonamiento == 0 and lectura == 0 
+								                and competencias == 0 and formulacion == 0 and pensamiento == 0 and Diseno == 0}">
+								       <div class="alert alert-danger text-center" role="alert">
+								           <strong>Anulado:</strong> El sistema reporta que el examen fue Anulado.
+								       </div>
+								   </div>
+								   
+								   
+								   
+				<div class="centered-container">
+					
+								
+							
+							<div class="card-container">
+										    <div class="card">
+										        <h2>INGLÉS</h2>
+										        
+										        <div class="info">
+										            <h3>
+										                <span th:text="${inglesLevel}" 
+										                      th:class="${inglesLevel == 'Nivel 1' ? 'nivel-1' : (inglesLevel == 'Nivel 2' ? 'nivel-2' : (inglesLevel == 'Nivel 3' ? 'nivel-3' : 'nivel-4'))}">
+										                </span>
+										            </h3>
+										        </div>
+										        
+										        <div class="info">
+										            <h3>Puntaje</h3>
+										            <span th:text="${ingles}"></span> 
+										        </div>
+										    
+										
+							<div class="info">
+								<h3>Nivel De Inglés</h3>
+								<p th:text="${levelIngles}"></p>
+							</div>
+						</div>
+					</div>
+		
+					<div class="card-container">
+					    <div class="card">
+					        <h2>COMUNICACIÓN ESCRITA</h2>
+					        
+					        <div class="info">
+					            <h3>
+					                <span th:text="${comunicacionLevel}" 
+					                      th:class="${comunicacionLevel == 'Nivel 1' ? 'nivel-1' : (comunicacionLevel == 'Nivel 2' ? 'nivel-2' : (comunicacionLevel == 'Nivel 3' ? 'nivel-3' : 'nivel-4'))}">
+					                </span>
+					            </h3>
+					        </div>
+					        
+					        <div class="info">
+					            <h3>Puntaje</h3>
+					            <span th:text="${comunicacion}"></span> 
+					        </div>
+					    </div>
+					</div>
+		
+		
+		
+				<div class="card-container">
+							   <div class="card">
+							        <h2>RAZONAMIENTO CUANTITATIVO</h2>
+							        
+							        <div class="info">
+							            <h3>
+							                <span th:text="${razonamientoLevel}" 
+							                      th:class="${razonamientoLevel == 'Nivel 1' ? 'nivel-1' : (razonamientoLevel == 'Nivel 2' ? 'nivel-2' : (razonamientoLevel == 'Nivel 3' ? 'nivel-3' : 'nivel-4'))}">
+							                </span>
+							            </h3>
+							        </div>
+							        
+							        <div class="info">
+							            <h3>Puntaje</h3>
+							            <span th:text="${razonamiento}"></span> 
+							        </div>
+							    </div>
+							</div>
+				
+				
+			
+		<div class="card-container">
+					    <div class="card">
+					        <h2>LECTURA CRITICA</h2>
+					        
+					        <div class="info">
+					            <h3>
+					                <span th:text="${lecturaLevel}" 
+					                      th:class="${lecturaLevel == 'Nivel 1' ? 'nivel-1' : (lecturaLevel == 'Nivel 2' ? 'nivel-2' : (lecturaLevel == 'Nivel 3' ? 'nivel-3' : 'nivel-4'))}">
+					                </span>
+					            </h3>
+					        </div>
+					        
+					        <div class="info">
+					            <h3>Puntaje</h3>
+					            <span th:text="${lectura}"></span> 
+					        </div>
+					    </div>
+					</div>
+		
+		
+		<div class="card-container">
+					    <div class="card">
+					        <h2>COMPETENCIAS CIUDADANAS</h2>
+					        
+					        <div class="info">
+					            <h3>
+					                <span th:text="${competenciasLevel}" 
+					                      th:class="${competenciasLevel == 'Nivel 1' ? 'nivel-1' : (competenciasLevel == 'Nivel 2' ? 'nivel-2' : (competenciasLevel == 'Nivel 3' ? 'nivel-3' : 'nivel-4'))}">
+					                </span>
+					            </h3>
+					        </div>
+					        
+					        <div class="info">
+					            <h3>Puntaje</h3>
+					            <span th:text="${competencias}"></span> 
+					        </div>
+					    </div>
+					</div>
+		
+		
+		
+		
+		<div class="card-container">
+					    <div class="card">
+					        <h2>FORMULACIÓN DE PROYECTOS DE INGENIERÍA</h2>
+					        
+					        <div class="info">
+					            <h3>
+					                <span th:text="${formulacionLevel}" 
+					                      th:class="${formulacionLevel == 'Nivel 1' ? 'nivel-1' : (formulacionLevel == 'Nivel 2' ? 'nivel-2' : (formulacionLevel == 'Nivel 3' ? 'nivel-3' : 'nivel-4'))}">
+					                </span>
+					            </h3>
+					        </div>
+					        
+					        <div class="info">
+					            <h3>Puntaje</h3>
+					            <span th:text="${formulacion}"></span> 
+					        </div>
+					    </div>
+					</div>
+		
+		
+			
+				<div class="card-container">
+					    <div class="card">
+					        <h2>PENSAMIENTO CIENTÍFICO - MATEMÁTICAS Y ESTADÍSTICA</h2>
+					        
+					        <div class="info">
+					            <h3>
+					                <span th:text="${pensamientoLevel}" 
+					                      th:class="${pensamientoLevel == 'Nivel 1' ? 'nivel-1' : (pensamientoLevel == 'Nivel 2' ? 'nivel-2' : (pensamientoLevel == 'Nivel 3' ? 'nivel-3' : 'nivel-4'))}">
+					                </span>
+					            </h3>
+					        </div>
+					        
+					        <div class="info">
+					            <h3>Puntaje</h3>
+					            <span th:text="${pensamiento}"></span> 
+					        </div>
+					    </div>
+					</div>
+			
+						
+		
+		<div class="card-container">
+					    <div class="card">
+					        <h2>DISEÑO DE SOFTWARE</h2>
+					        
+					        <div class="info">
+					            <h3>
+					                <span th:text="${DisenoLevel}" 
+					                      th:class="${DisenoLevel == 'Nivel 1' ? 'nivel-1' : (DisenoLevel == 'Nivel 2' ? 'nivel-2' : (DisenoLevel == 'Nivel 3' ? 'nivel-3' : 'nivel-4'))}">
+					                </span>
+					            </h3>
+					        </div>
+					        
+					        <div class="info">
+					            <h3>Puntaje</h3>
+					            <span th:text="${Diseno}"></span> 
+					        </div>
+					    </div>
+					</div>
+			
+
+			<!-- Puedes continuar añadiendo las demás tablas como tarjetas usando la misma estructura -->
+		</div>
+	</div>
+
+	<div class="container mt-5">
+			        <button class="btn btn-light btn-back" onclick="window.history.back()">Volver</button> <!-- Botón de volver usando history -->
+					</div>
+					
+					
+	<!-- jQuery y Popper.js necesarios para Bootstrap -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+	<!-- Bootstrap JS -->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+	<footer class="bg-dark text-white">
+		       <div class="container-fluid p-6">
+		           <div class="row">
+		               <div class="col text-center">
+		                   <p class="mb-0">DANNA VALENTINA MILLAN SOLANO</p>
+		                   <p class="mb-0">2024</p>
+		               </div>
+		           </div>
+		       </div>
+		   </footer>
+</body>
+
+</html>
